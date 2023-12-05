@@ -353,8 +353,12 @@ sub mirror_csv {
     return undef;
 }
 
+=pod
+
 =head1 REPORTING BUGS, CONTRIBUTING ENHANCEMENTS
 
 This module is developed on GitHub at L<https://github.com/gbxyz/perl-data-mirror>.
+
+=cut
 
 1;
