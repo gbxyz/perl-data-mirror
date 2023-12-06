@@ -1,6 +1,7 @@
 #!perl -w
-use Test;
+use Devel::Confess;
 use Data::Mirror qw(:all);
+use Test;
 use vars qw($result);
 use strict;
 

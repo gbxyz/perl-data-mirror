@@ -235,9 +235,9 @@ sub mirror_file {
 
 =head2 mirror_str($url)
 
-This method returns a string containing the resource. If it's possible that the
-resource might be large enough to use up a lot of memory, consider using
-C<mirror_file()> or C<mirror_fh()> instead.
+This method returns a UTF-8 encoded string containing the resource. If it's
+possible that the resource might be large enough to use up a lot of memory,
+consider using C<mirror_file()> or C<mirror_fh()> instead.
 
 =cut
 
@@ -246,8 +246,7 @@ sub mirror_str {
     my $file = mirror_file(@_);
 
     if ($file) {
-        my $str = read_file($file, 'binmode' => ':utf8');
-        return $str;
+        return encode('UTF-8', read_file($file, 'binmode' => ':utf8'));
     }
 
     return undef;
@@ -265,7 +264,13 @@ sub mirror_fh {
 
     my $file = mirror_file(@_);
 
-    return IO::File->new($file) if ($file);
+    if ($file) {
+        my $fh = IO::File->new($file);
+
+        $fh->binmode(':utf8');
+
+        return $fh;
+    }
 
     return undef;
 }
@@ -300,9 +305,7 @@ sub mirror_json {
 
     my $str = mirror_str(@_);
 
-    if ($str) {
-        return $JSON->decode($str);
-    }
+    return $JSON->decode($str) if ($str);
 
     return undef;
 }
