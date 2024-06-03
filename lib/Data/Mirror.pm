@@ -191,14 +191,7 @@ sub mirror_file {
 
     $ttl = $TTL_SECONDS unless (defined($ttl));
 
-    #
-    # the local filename is based on the hash of the URL, salted by the user's
-    # login
-    #
-    my $file = File::Spec->catfile(
-        File::Spec->tmpdir,
-        join('.', __PACKAGE__, sha256_hex(getlogin().':'.($url->isa('URI') ? $url->as_string : $url)), 'dat')
-    );
+    my $file = filename($url);
 
     my $now = time();
 
@@ -354,6 +347,29 @@ sub mirror_csv {
     }
 
     return undef;
+}
+
+=pod
+
+=head1 OTHER FUNCTIONS
+
+    $file = Data::Mirror::filename($url);
+
+Returns the local filename that L<Data::Mirror> would use for the given URL.
+
+=cut
+
+sub filename {
+    my $url = shift;
+
+    #
+    # the local filename is based on the hash of the URL, salted by the user's
+    # login
+    #
+    return File::Spec->catfile(
+        File::Spec->tmpdir,
+        join('.', __PACKAGE__, sha256_hex(getlogin().':'.($url->isa('URI') ? $url->as_string : $url)), 'dat')
+    );
 }
 
 =pod
