@@ -1,3 +1,7 @@
+0.07 - 2024-10-18:
+  - correctly set $VERSION in Mirror.pm so the user agent string is valid.
+  - canonicalise URL when generating filename.
+
 0.06 - 2024-10-18:
   - use LWP::Online to skip tests when running without connectivity.
 

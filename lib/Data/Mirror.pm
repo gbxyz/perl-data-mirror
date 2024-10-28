@@ -22,7 +22,7 @@ use strict;
 use utf8;
 use vars qw($VERSION %EXPORT_TAGS $TTL_SECONDS $UA $JSON $CSV);
 
-$VERSION = '0.06';
+$VERSION = '0.07';
 
 $EXPORT_TAGS{'all'} = [qw(
     mirror_str
