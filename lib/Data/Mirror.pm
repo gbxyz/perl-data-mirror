@@ -20,7 +20,9 @@ use base qw(Exporter);
 use open qw(:std :utf8);
 use strict;
 use utf8;
-use vars qw(%EXPORT_TAGS $TTL_SECONDS $UA $JSON $VERSION $CSV);
+use vars qw($VERSION %EXPORT_TAGS $TTL_SECONDS $UA $JSON $CSV);
+
+$VERSION = '0.06';
 
 $EXPORT_TAGS{'all'} = [qw(
     mirror_str
