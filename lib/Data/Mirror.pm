@@ -371,7 +371,7 @@ sub filename {
             sha256_hex(
                 getlogin(),
                 ':',
-                ($url->isa('URI') ? $url->as_string : $url),
+                ($url->isa('URI') ? $url->canonical->as_string : $url),
             ),
             'dat'
         ))
