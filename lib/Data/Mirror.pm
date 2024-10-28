@@ -82,14 +82,14 @@ The return value will be C<undef> if there's an error. The module will C<carp()>
 so you can catch any errors.
 
 I<Note: it's possible that the remote resource will actually be someting that
-evaluates to C<undef> (for example, a JSON document that is exactly C<"null">, or
-a YAML document that is exactly C<"~">), or if there is an error parsing the
+evaluates to C<undef> (for example, a JSON document that is exactly C<"null">,
+or a YAML document that is exactly C<"~">), or if there is an error parsing the
 resource once retrieved. Consider wrapping the method call in C<eval> if you
 need to distinguish between these scenarios.>
 
 By default, if the locally cached version of the resource is younger than
-C<$Data::Mirror::TTL_SECONDS> old, C<Data::Mirror> will just use it and won't try to
-refresh it, but you can override that per-request by passing the C<$ttl>
+C<$Data::Mirror::TTL_SECONDS> old, C<Data::Mirror> will just use it and won't
+try to refresh it, but you can override that per-request by passing the C<$ttl>
 argument:
 
     $value = Data::Mirror::mirror_TYPE($url, $ttl);
