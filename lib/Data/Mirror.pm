@@ -210,6 +210,9 @@ sub mirror_file {
 
     return $file unless (stale($url));
 
+    my $dir = dirname($file);
+    croak(sprintf("Unable to create '%s'", $dir)) if (!-d $dir && !make_path($dir, { mode => 0700 }));
+
     #
     # update the local file
     #
