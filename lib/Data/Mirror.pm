@@ -22,7 +22,7 @@ use base qw(Exporter);
 use open qw(:std :utf8);
 use strict;
 use utf8;
-use vars qw($VERSION %EXPORT_TAGS $TTL_SECONDS $UA $JSON $CSV);
+use vars qw($VERSION %EXPORT_TAGS $TTL_SECONDS $UA $JSON $CSV $XDG);
 
 $VERSION = '0.07';
 
@@ -169,6 +169,17 @@ variable to change how it processes CSV data.
 $CSV = Text::CSV_XS->new ({
     'binary' => 1,
 });
+
+
+=pod
+
+=head2 $XDG
+
+This is a L<File::XDG> object used to obtain the user's cache directory.
+
+=cut
+
+$XDG = File::XDG->new(path_class => 'File::Spec', name => __PACKAGE__);
 
 =pod
 
