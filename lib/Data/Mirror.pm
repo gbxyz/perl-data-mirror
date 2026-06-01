@@ -43,7 +43,7 @@ Exporter::export_ok_tags('all');
     use Data::Mirror qw(:all);
 
     # set the global time-to-live of all cached resources
-    $Data::Mirror::TTL = 30;
+    $Data::Mirror::TTL_SECONDS = 30;
 
     # get some data
     $file   = mirror_file($url);
