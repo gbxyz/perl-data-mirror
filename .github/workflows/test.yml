@@ -1,0 +1,18 @@
+name: test
+
+on:
+  push:
+    branches:
+      - man
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    container: perl:latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: cpanm -n Dist::Zilla
+      - run: dzil authordeps --missing | cpanm -n
+      - run: dzil listdeps --missing | cpanm -n
+      - run: dzil test
