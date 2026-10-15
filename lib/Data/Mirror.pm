@@ -17,14 +17,13 @@ use LWP::UserAgent;
 use Text::CSV_XS qw(csv);
 use XML::LibXML;
 use YAML::XS;
-use IO::File;
 use base qw(Exporter);
 use open qw(:std :utf8);
 use strict;
 use utf8;
 use vars qw($VERSION %EXPORT_TAGS $TTL_SECONDS $UA $JSON $CSV $XDG);
 
-$VERSION = '0.08';
+$VERSION = '0.09';
 
 $EXPORT_TAGS{'all'} = [qw(
     mirror_str
