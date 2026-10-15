@@ -12,6 +12,7 @@ use File::XDG;
 use HTTP::Date;
 use JSON::XS;
 use List::Util qw(any max);
+use LWP::Protocol::https;
 use LWP::UserAgent;
 use Text::CSV_XS qw(csv);
 use XML::LibXML;
